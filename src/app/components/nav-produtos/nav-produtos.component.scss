@@ -1,0 +1,48 @@
+.body {
+  background: #f2f2f2;
+  .carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      margin-right: 20px;
+    }
+    .info-valor {
+      color: #fff;
+    }
+  }
+}
+
+.modal-body {
+  .list-produtos {
+    mat-card {
+      margin-bottom: 5px;
+      img {
+        width: 100%;
+      }
+      /deep/ .mat-card-header-text {
+        width: 100%;
+      }
+      /deep/ input {
+        width: 6%;
+        height: 100%;
+        padding: 7px;
+        text-align: center;
+      }
+      .mat-card-title {
+        font-size: 15px;
+      }
+    }
+  }
+}
+.modal-footer {
+  justify-content: space-between;
+  .info-valor {
+    float: left;
+  }
+  .button {
+    a {
+      margin-right: 10px;
+    }
+  }
+}

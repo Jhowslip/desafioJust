@@ -1,3 +1,52 @@
-<p>
-  Aqui ta funcionando mayuri e vou listar os produtos aqui pq eu sou zika !
-</p>
+<div class="body">
+    <div class="list-produto">
+        <div class="card-produto" *ngFor="let produto of produtos.products;">
+            <div class="card">
+                <img src="{{ produto.picture }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-title">{{ produto.title }}</p>
+                  <p>{{ produto.price }}</p>
+                  <a href="#" class="btn btn-primary" (click)="openModal(content, produto)">Detalhes</a>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <p class="modal-title">Detalhes do Produto</p>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="topo-modal">
+      <div class="card">
+        <img src="{{ infoProduto.picture }}" class="card-img-top">
+      </div>
+      <div class="info-produto">
+        <div class="title">
+          <h5>{{ infoProduto.title }}</h5>
+        </div>
+
+        <div class="preco">
+          <h2>{{ infoProduto.price }}</h2>
+        </div>
+
+        <div class="estoque">
+          <p>Estoque Disponivel: {{ infoProduto.quantity }}</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="info-descricao">
+      <p>Descrição do Produto:</p>
+      <p class="card-title">{{ infoProduto.description }}</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="addCarrinho(infoProduto)" readonly="!infoProduto">Comprar</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
+  </div>
+</ng-template>

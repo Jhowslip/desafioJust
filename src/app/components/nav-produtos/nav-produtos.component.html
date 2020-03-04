@@ -1,0 +1,56 @@
+<div class="body">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <nav class="navbar navbar-light" style="background-color: #50b7d6;">
+    <a class="navbar-brand" href="#">
+      <img src="../assets/images/cell-icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      Sell Phone
+    </a>
+    <div class="carrinho">
+      <div class="icon" (click)="openModal(content, obj)">
+        <mat-icon matBadge="{{indexCarrinho}}" matBadgeColor="warn">shopping_cart</mat-icon>
+      </div>
+      <div class="info-valor">
+        <h4>{{ exibiValor }}</h4>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<ng-template #content let-modal>
+
+  <div class="modal-header">
+    <p class="modal-title">Carrinho</p>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="error" *ngIf="validarCart">
+      <h4>Carrinho Esta Vazio</h4>
+    </div>
+    <div class="list-produtos" *ngFor="let produto of itemCarrinho">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar><img src="{{ produto.picture }}"></div>
+          <mat-card-title>{{ produto.title }}</mat-card-title>
+          <button mat-icon-button color="primary" (click)="addItem(itemCarrinho, produto)">
+            <mat-icon>add_shopping_cart</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="excluirItem(itemCarrinho, produto)">
+            <mat-icon>remove_shopping_cart</mat-icon>
+          </button>
+        </mat-card-header>
+        
+      </mat-card>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="info-valor">
+      <h4>{{ exibiValor }}</h4>
+    </div>
+    <div class="button">
+      <h5>Total de Itens: {{indexCarrinho}}</h5>
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
+    </div>
+  </div>
+</ng-template>

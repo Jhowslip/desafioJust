@@ -8,15 +8,29 @@ import { MatButtonModule} from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatOptionModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ListProdutoComponent } from './components/list-produto/list-produto.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ListProdutoServiceService } from './components/list-produto/service/list-produto-service.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DataSharingService } from 'src/shared/data-sharing.service';
+import { NavProdutosComponent } from './components/nav-produtos/nav-produtos.component';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+
+
+
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListProdutoComponent
+    ListProdutoComponent,
+    NavProdutosComponent
   ],
   imports: [
     BrowserModule,
@@ -26,10 +40,17 @@ import { ListProdutoComponent } from './components/list-produto/list-produto.com
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatBadgeModule
-
+    MatBadgeModule,
+    HttpClientModule,
+    NgbModule,
+    MatOptionModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    FormsModule 
+    
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ListProdutoServiceService, DataSharingService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
